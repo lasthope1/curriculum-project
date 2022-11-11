@@ -1,0 +1,156 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'); */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    margin: 0 !important;
+}
+
+.app {
+    display: flex;
+    /* grid-template-columns: repeat(2, 1fr); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('graduate.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.block {
+  /* display: inline-block; */
+  position: absolute;
+  top: 0;
+  left: 52%;
+  opacity: 0.8;
+  border-bottom: 916px solid #3d3d3d;
+	border-right: 206px solid #3d3d3d;
+	border-left: 600px solid transparent;
+}
+
+.btn-student {
+    display: inline-block;
+    padding: 10px 15px;
+    background-image: linear-gradient(to right, #8088cb 20%, #5c457d 100%);
+    color: #fff;
+    position: absolute;
+    width: 250px;
+    height: 60px;
+    top: 40%;
+    left: 30%;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 3px rgba(0,0,0,0.25);
+
+    transition: 0.4s;
+}
+
+.btn-adviser {
+  display: inline-block;
+  padding: 10px 15px;
+  /* background-image: linear-gradient(to right, #8088cb 20%, #5c457d 100%); */
+  background: #5894ee;
+  color: #fff;
+  position: absolute;
+  width: 250px;
+  height: 60px;
+  top: 40%;
+  left: 30%;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 0 3px rgba(0,0,0,0.25);
+
+  transition: 0.4s;
+}
+
+.triangle {
+  display: flex;
+  width: 0;
+	height: 0;
+	border-top: 916px solid #674B91;
+	border-right: 600px solid transparent;
+	border-left: 900px solid #674B91;
+}
+
+.head-wrapper {
+    position: absolute;
+    display: inline-flex;
+    top: 4%;
+    left: 5%;
+}
+
+.cmu-Logo {
+    width: 155px; 
+    height: 150px;
+    border-radius: 50%;
+}
+
+.hor-line {
+    border-top: 5px solid #fff;
+}
+
+/*Side Nav*/
+#Sidenav a {
+    position: absolute;
+    transition: 0.4s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  #Sidenav a:hover {
+    left: 0;
+    background: #5894ee;
+    color: #fff;
+  }
+  
+  #student {
+    top: 50%;
+    left: -60px;
+    background: #373737;
+    color: #373737;
+  }
+  
+  #advicer {
+    top: 58%;
+    left: -60px;
+    background: #373737;
+    color: #373737;
+  }
+  
+  #admin {
+    top: 66%;
+    left: -60px;
+    background: #373737;
+    color: #373737;
+  }
+
+  #student-active {
+    top: 50%;
+    left: 0;
+    background: #4984de;
+    color: #fff;
+
+  }
+
+  #advicer-active {
+    top: 58%;
+    left: 0;
+    background: #4984de;
+    color: #fff;
+  }
+
+  #admin-active {
+    top: 66%;
+    left: 0;
+    background: #4984de;
+    color: #fff;
+  }

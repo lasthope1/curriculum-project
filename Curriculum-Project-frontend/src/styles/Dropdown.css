@@ -1,0 +1,26 @@
+
+.dropdown-btn:hover{
+    /* background-color: grey; */
+}
+
+.accordion-content {
+    position: absolute;
+    display: inline;
+}
+
+.gg-zeit {
+    /* box-sizing: border-box; */
+    position: relative;
+    display: flex;
+    transform: scale(var(--ggs,1));
+    width: 2px;
+    height: 2px;
+
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 18px solid currentColor;
+}
+
+.rotate{
+    transform: rotate(180deg)
+}

@@ -1,0 +1,290 @@
+# union oop = Cat | List | Course
+
+type User {
+    id: ID!,
+    fullname: String,
+    email: String,
+    password: String,
+    role: String,
+    question: Question!,
+    data: uCurriculum!,
+    # data: userData!,
+    # fe: fCat!
+    rootCredit: RootCredit,
+    gpa: String,
+    isGrad: String!,
+    setField: String
+}
+
+type RootCredit {
+    ge: Int,
+    fs: Int,
+    fe: Int
+}
+
+type Advisor {
+    id: ID!,
+    fullname: String,
+    email: String,
+    cmu_name: String,
+    role: String,
+    stu: [SInfo]
+}
+
+type SInfo {
+    id: ID!,
+    student_id: String,
+    major_id: String,
+    curriculum_id: String,
+    major_name_th: String,
+    semester_admit: String,
+    year_admit: String,
+    study_time_id: String,
+    adviser_id: String,
+    adviser_name: String,
+    adviser_cmu_account: String,
+    grade_status: String
+}
+
+type Info {
+    id: ID!,
+    student_id: String,
+    major_id: String,
+    curriculum_id: String,
+    major_name_th: String,
+    semester_admit: String,
+    year_admit: String,
+    study_time_id: String,
+    adviser_id: String,
+    adviser_name: String,
+    adviser_cmu_account: String,
+}
+
+type fCat {
+    id: ID!,
+    name: String!,
+    credit: Int!,
+    keep_over_credit: Boolean!,
+    filter: Filter,
+    refCat: [uCat!]!,
+    refList: [fList!]!,
+    refCourse: [uCourse!]
+}
+
+type uCourse {
+    id: ID,
+    COURSENO: String,
+    name: String,
+    credit: Int,
+    grade: String,
+    status: String
+},
+
+type fList {
+    id: ID!,
+    name: String!,
+    credit: Int!,
+    keep_over_credit: Boolean!,
+    filter: Filter,
+    courses: [uCourse!]!,
+    reRef: [uCat!]!,
+    newCredit: Int,
+    status: String
+}
+
+type uList {
+    id: ID!,
+    name: String!,
+    credit: Int!,
+    keep_over_credit: Boolean!,
+    filter: Filter,
+    courses: [uCourse!]!,
+    reRef: [uCat!]!,
+    type: String,
+    newCredit: Int,
+    status: String
+},
+
+type uCat {
+    id: ID!,
+    name: String!,
+    credit: Int!,
+    keep_over_credit: Boolean!,
+    filter: Filter,
+    refCat: [uCat!]!,
+    refList: [uList!]!,
+    refCourse: [uCourse!]
+},
+
+type Admin {
+    id: ID,
+    fullname: String,
+    email: String,
+    password: String,
+    role: String,
+    question: Question
+}
+
+type aCourse {
+    id: ID!,
+    COURSENO: String!,
+    name: String!,
+    credit: Int!
+},
+
+type aList {
+    id: ID!,
+    name: String!,
+    credit: Int!,
+    keep_over_credit: Boolean!,
+    filter: Filter,
+    courses: [aCourse!]!,
+    reRef: [aCat!]!
+},
+
+type aCat {
+    id: ID!,
+    name: String!,
+    credit: Int!,
+    keep_over_credit: Boolean!,
+    filter: Filter,
+    refCat: [aCat!]!,
+    refList: [aList!]!,
+    refCourse: [aCourse!]!
+},
+
+# type Return {
+#     refCat: [Cat],
+#     refList: [List],
+#     refCourse: [Course]
+# }
+
+type Filter {
+    id: ID!,
+    question: String!,
+    activation: String!
+},
+
+type Question {
+    id: ID!,
+    question: String!,
+    choice: [String!]!,
+    answer: String!
+},
+
+# type registerReturn {
+#     user: User!,
+#     registerError: [String!]!
+# }
+
+type Faculty {
+    id: ID!,
+    fid: String!,
+    name: String!,
+    major: [Major]
+},
+
+type Major {
+    id: ID!,
+    mid: String!
+    fid: String!
+    name: String!,
+    curriculum: [aCurriculum]
+},
+
+type aCurriculum {
+    id: ID!,
+    mid: String!,
+    name: String!,
+    cat: [aCat],
+    fe: aCat,
+    curId: String!
+}
+
+type uCurriculum {
+    id: ID!,
+    name: String!,
+    cat: [uCat],
+    fe: fCat
+    # setField: String!
+}
+
+
+type Query {
+    course(id: ID!): aCourse!
+    courses: [aCourse!]!
+
+    question(id: ID!): Question!,
+    questions: [Question!]!
+
+    filter(id: ID!): Filter!,
+    filters: [Filter!]!
+
+    list(id: ID!): aList!,
+    lists: [aList!]!,
+
+    aCat(id: ID!): aCat!,
+    aCats: [aCat!]!,
+
+    uCat(id: ID!): uCat!
+    
+    user(id: ID!): User!,
+    users: [User!]!,
+
+    me: User,
+    testMe: String,
+
+    advisor: Advisor,
+
+    fa(id: ID!): Faculty!,
+    fas: [Faculty!]!
+
+    ma(id: ID!): Major!,
+    mas: [Major!]!
+
+    aCur(id: ID!): aCurriculum!,
+    aCurs: [aCurriculum!]!,
+
+    uCur(id: ID!): uCurriculum!,
+    uCurs: [uCurriculum!]!
+},
+
+type Mutation {
+    cCourse(COURSENO: String!, name: String!, credit: Int!): aCourse!,
+    uCourse(id: ID!, name: String, COURSENO: String, credit: Int): aCourse!
+    dCourse(id: ID!): String
+
+    cQuestion(question: String!, choice: [String!]!, answer: String!): Question!
+    uQuestion(id: ID!, question: String, choice: [String], answer: String): Question!
+
+    cFilter(question: String!, activation: String!): Filter!
+
+    cList(name: String!, credit: Int!, keep_over_credit: Boolean!, filter: String, courses: [String]): aList!
+    uList(id: ID!, name: String, credit: Int, keep_over_credit: Boolean, filter: String, courses: [String]): aList!
+    pList(id: ID!, pcourses: [String]): aList!,
+    coneList(id: ID!, cid: ID!): aList!,
+    addByCourse(name: String!, credit: Int!, keep_over_credit: Boolean!, filter: String, courses: [String]): aList!
+
+
+    cCat(name: String!, credit: Int!, keep_over_credit: Boolean!, filter: String, refCat: [String], refList: [String], refCourse: [String]): aCat!
+    uCat(id: ID!, name: String, credit: Int, keep_over_credit: Boolean, filter: String, refCat: [String], refList: [String], refCourse: [String]): aCat!
+
+    cFa(fid: String!, name: String!, major: [String]): Faculty!,
+    uFa(id: ID!, fid: String!, name: String, major: [String]): Faculty!,
+
+    cMa(mid: String!, fid: String!, name: String!, curriculum: [String]): Major!,
+    uMa(id: ID!, mid: String!, fid: String!, name: String, curriculum: [String]): Major!,
+
+    cAcu(mid: String!, name: String!, cat: [String!]!, fe: String!, curId: String!): aCurriculum!,
+    uAcu(id: ID!, mid: String!, name: String, cat: [String], fe: String!, curId: String!): aCurriculum!,
+
+    cUcu(name: String!, cat: [String!]!): uCurriculum!,
+    uUcu(id: ID!, name: String, cat: [String!]!): uCurriculum!,
+
+    rUser(fullname: String!, email: String!, password: String!, role: String!): String!
+    login(email: String!, password: String!): String
+
+    aRegister(fullname: String!, email: String!, cmu_name: String!, role: String!): String!
+    aLogin(email: String!): String!
+}
+
